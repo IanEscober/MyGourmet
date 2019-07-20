@@ -1,0 +1,20 @@
+<h1>Menus</h1>
+
+<ul>
+    <li *ngFor="let menu of menus">
+        <p>{{menu.name}}</p>
+        <p>{{menu.description}}</p>
+        <ul>
+            <li *ngFor="let procedure of menu.procedures">
+                <p>{{procedure}}</p>
+            </li>
+        </ul>
+        <ul>
+            <li *ngFor="let ingredients of menu.ingredientItems">
+                <p>{{ingredients}}</p>
+            </li>
+        </ul>
+        <p>{{menu.price}}</p>
+        <p>{{menu.stock}}</p>
+    </li>
+</ul>
