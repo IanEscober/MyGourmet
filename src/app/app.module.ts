@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 import { MenusModule } from './menus/menus.module';
 import { IngredientsModule } from './ingredients/ingredients.module';
 
@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
+    CoreModule,
     MenusModule,
     IngredientsModule
   ],
