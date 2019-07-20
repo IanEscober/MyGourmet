@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MenusService } from './menus.service';
-import { IMenuItem } from '../shared/models/MenuItem.model';
+import { IMenuItem } from '../core/models/MenuItem.model';
 
 @Component({
   selector: 'app-menu',

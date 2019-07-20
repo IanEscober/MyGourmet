@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { IngredientsService } from './ingredients.service';
-import { IIngredientItem } from '../shared/models/IngredientItem.model';
+import { IIngredientItem } from '../core/models/IngredientItem.model';
 
 @Component({
   selector: 'app-ingredients',

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { IMenuItem } from '../shared/models/MenuItem.model';
+import { IMenuItem } from '../core/models/MenuItem.model';
 
 @Injectable()
 export class MenusService {
