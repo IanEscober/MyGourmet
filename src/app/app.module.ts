@@ -7,6 +7,7 @@ import { MenusModule } from './menus/menus.module';
 import { IngredientsModule } from './ingredients/ingredients.module';
 
 import { AppComponent } from './app.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    AuthModule,
     MenusModule,
     IngredientsModule
   ],

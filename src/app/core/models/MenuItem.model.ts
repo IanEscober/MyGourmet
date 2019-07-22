@@ -3,7 +3,8 @@ export interface IMenuItem {
     name: string,
     description: string,
     procedures: string[],
-    ingredientItems: number[],
+    ingredientIds: number[],
+    ingredientNames: string[],
     price: number,
     stock: number
 }

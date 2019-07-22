@@ -2,19 +2,9 @@
 
 <ul>
     <li *ngFor="let menu of menus">
-        <p>{{menu.name}}</p>
+        <h2><a routerLink="/menus/{{menu.id}}">{{menu.name}}</a></h2>
         <p>{{menu.description}}</p>
-        <ul>
-            <li *ngFor="let procedure of menu.procedures">
-                <p>{{procedure}}</p>
-            </li>
-        </ul>
-        <ul>
-            <li *ngFor="let ingredients of menu.ingredientItems">
-                <p>{{ingredients}}</p>
-            </li>
-        </ul>
-        <p>{{menu.price}}</p>
-        <p>{{menu.stock}}</p>
+        <p>Price: {{menu.price}}</p>
+        <p>Available Stock: {{menu.stock}}</p>
     </li>
 </ul>

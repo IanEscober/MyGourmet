@@ -1,6 +1,7 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { IMenuItem } from '../models/MenuItem.model';
-import { IIngredientItem } from '../models/IngredientItem.model';
+import { IMenuItem } from '../models/menuItem.model';
+import { IIngredientItem } from '../models/ingredientItem.model';
+import { IUser } from '../models/user.model';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -22,10 +23,14 @@ export class MockApiService implements InMemoryDbService {
         ];
 
         const menus: IMenuItem[] = [
-            { id: 1, name: 'Salad', description: 'Vestibulum interdum sapien quis iaculis sagittis.', procedures: ['Put Vegetables', 'Mix', 'Done'], ingredientItems: [1, 2, 3], price: 1, stock: 1 },
-            { id: 2, name: 'Barbeque', description: 'Nullam laoreet neque at pharetra maximus.', procedures: ['Put Meat', 'Grill', 'Done'], ingredientItems: [1, 2, 7], price: 2, stock: 2 },
-            { id: 3, name: 'Sushi', description: 'Suspendisse tempor mauris nec turpis maximus, in placerat erat mattis.', procedures: ['Put Vegetables', 'Simmer', 'Done'], ingredientItems: [1, 2, 10], price: 3, stock: 3 },
+            { id: 1, name: 'Salad', description: 'Vestibulum interdum sapien quis iaculis sagittis.', procedures: ['Put Vegetables', 'Mix', 'Done'], ingredientIds: [1, 2, 10], ingredientNames: ['Salt', 'Pepper', 'Vegetables'], price: 1, stock: 1 },
+            { id: 2, name: 'Barbeque', description: 'Nullam laoreet neque at pharetra maximus.', procedures: ['Put Meat', 'Grill', 'Done'], ingredientIds: [1, 2, 7], ingredientNames: ['Salt', 'Pepper', 'Meat'], price: 2, stock: 2 },
+            { id: 3, name: 'Sushi', description: 'Suspendisse tempor mauris nec turpis maximus, in placerat erat mattis.', procedures: ['Put Vegetables', 'Simmer', 'Done'], ingredientIds: [1, 2, 9], ingredientNames: ['Salt', 'Pepper', 'Fish'], price: 3, stock: 3 },
         ];
-        return { ingredients, menus };
+
+        const users: IUser[] = [
+            { id: 1, username: 'admin', password: 'admin' }
+        ];
+        return { ingredients, menus, users };
     }
 }

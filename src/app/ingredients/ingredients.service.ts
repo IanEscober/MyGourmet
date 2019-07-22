@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { IIngredientItem } from '../core/models/IngredientItem.model';
+import { IIngredientItem } from '../core/models/ingredientItem.model';
 
 @Injectable()
 export class IngredientsService {

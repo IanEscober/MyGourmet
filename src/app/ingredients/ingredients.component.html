@@ -2,9 +2,9 @@
 
 <ul>
     <li *ngFor="let ingredient of ingredients">
-        <p>{{ingredient.name}}</p>
+        <h2><a routerLink="/ingredients/{{ingredient.id}}">{{ingredient.name}}</a></h2>
         <p>{{ingredient.description}}</p>
-        <p>{{ingredient.price}}</p>
-        <p>{{ingredient.stock}}</p>
+        <p>Price: {{ingredient.price}}</p>
+        <p>Available Stock: {{ingredient.stock}}</p>
     </li>
 </ul>

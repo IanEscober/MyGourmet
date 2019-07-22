@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { MenusService } from './menus.service';
 import { MenusComponent } from './menus.component';
+import { MenusDetailComponent } from './menus-detail/menus-detail.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-  declarations: [MenusComponent],
+  declarations: [MenusComponent, MenusDetailComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   providers: [
     MenusService

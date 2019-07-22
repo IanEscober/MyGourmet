@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule }    from '@angular/common/http';
-
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MockApiService }  from './services/mockApi.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [],
@@ -14,9 +14,8 @@ import { MockApiService }  from './services/mockApi.service';
       MockApiService, { dataEncapsulation: false }
     )
   ],
-  exports: [
-    CommonModule,
-    HttpClientModule
+  providers: [
+    UserService
   ]
 })
 export class CoreModule { }
