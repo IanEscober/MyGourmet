@@ -1,11 +1,18 @@
-<form [formGroup]="authForm" (ngSubmit)="login()">
-    <fieldset>
-        <input formControlName="username" placeholder="Username" type="text" />
+<p>
+    <a [routerLink]="['/login']" *ngIf="authType == 'register'">Have an account?</a>
+    <a [routerLink]="['/register']" *ngIf="authType == 'login'">Need an account?</a>
+</p>
+
+<form [formGroup]="authForm" (ngSubmit)="OnSubmit()">
+    <fieldset [disabled]="isAuthenticating">
+        <fieldset>
+            <input formControlName="username" placeholder="Username" type="text" />
+        </fieldset>
+        <fieldset>
+            <input formControlName="password" placeholder="Password" type="password" />
+        </fieldset>
+        <button [disabled]="!authForm.valid" type="submit">
+            {{authType}}
+        </button>
     </fieldset>
-    <fieldset>
-        <input formControlName="password" placeholder="Password" type="password" />
-    </fieldset>
-    <button [disabled]="!authForm.valid" type="submit">
-        Login
-    </button>
 </form>

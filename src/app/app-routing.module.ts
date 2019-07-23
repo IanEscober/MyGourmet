@@ -8,7 +8,6 @@ import { IngredientsDetailComponent } from './ingredients/ingredients-detail/ing
 import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
-  { path: 'login', component: AuthComponent },
   { path: 'menus', component: MenusComponent },
   { path: 'menus/:id', component: MenusDetailComponent },
   { path: 'ingredients', component: IngredientsComponent },

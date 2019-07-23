@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../core/services/user.service';
 import { IUser } from '../core/models/user.model';
-
 
 @Component({
   selector: 'app-auth',
@@ -11,8 +11,11 @@ import { IUser } from '../core/models/user.model';
 })
 export class AuthComponent implements OnInit {
   authForm: FormGroup;
+  authType: string;
+  isAuthenticating: boolean = false;
 
   constructor(
+    private route: ActivatedRoute,
     private fb: FormBuilder,
     private userService: UserService
   ) {
@@ -24,12 +27,32 @@ export class AuthComponent implements OnInit {
 
   ngOnInit() {
     this.userService.isAuthenticated
-      .subscribe(res => console.log(`isAuthenticated: ${res}`));
+      .subscribe(result => console.log(`isAuthenticated: ${result}`));
+    
+    this.route.url.subscribe(url => {
+      this.authType = url[url.length - 1].path;
+    });
   }
 
-  login() {
+  OnSubmit(){
+    this.isAuthenticating = true;
     const credentials = this.authForm.value as IUser;
-    this.userService.authenticate(credentials);
+    
+    if(this.authType === 'login') {
+      this.login(credentials);
+    } else if(this.authType === 'register') {
+      this.register(credentials);
+    }
+  }
+
+  login(credentials: IUser) {
+    this.userService.authenticate(credentials)
+      .subscribe(isDone => this.isAuthenticating = !isDone);
+  }
+
+  register(credentials: IUser) {
+    this.userService.register(credentials)
+      .subscribe(isDone => this.isAuthenticating = !isDone);
   }
 
 }

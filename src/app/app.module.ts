@@ -16,7 +16,7 @@ import { AuthModule } from './auth/auth.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule,
+    CoreModule.forRoot(),
     AuthModule,
     MenusModule,
     IngredientsModule
