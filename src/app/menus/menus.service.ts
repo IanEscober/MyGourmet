@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { IMenuItem } from '../core/models/menuItem.model';
+import { RepositoryService } from '../core/services/repository.service';
 
 @Injectable()
 export class MenusService {
   private menusUrl: string = 'api/menus';
   
-  constructor(private http: HttpClient) { }
+  constructor(private repository: RepositoryService) { }
 
   getMenus(): Observable<IMenuItem[]> {
-    return this.http.get<IMenuItem[]>(this.menusUrl);
+    return this.repository.get<IMenuItem[]>(this.menusUrl);
   }
 
   getMenu(id: number): Observable<IMenuItem> {
-    return this.http.get<IMenuItem>(`${this.menusUrl}/${id}`);
+    return this.repository.get<IMenuItem>(`${this.menusUrl}/${id}`);
   }
 }
