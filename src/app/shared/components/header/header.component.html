@@ -1,0 +1,24 @@
+<header>
+    <h1>Welcome {{user}}</h1>
+    <nav>
+        <ul *appRequiresAuth="false">
+            <li>
+                <a routerLink="/register">Register</a>
+            </li>
+            <li>
+                <a routerLink="/login">Login</a>
+            </li>
+        </ul>
+        <ul *appRequiresAuth="true">
+            <li>
+                <a routerLink="/menus">Menus</a>
+            </li>
+            <li>
+                <a routerLink="/ingredients">Ingredients</a>
+            </li>
+            <li>
+                <button (click)="OnLogout()">Logout</button>
+            </li>
+        </ul>
+    </nav>
+</header>
