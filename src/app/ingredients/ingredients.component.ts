@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { IngredientsService } from './ingredients.service';
+import { IngredientsService } from '../core/services/ingredients.service';
 import { IIngredientItem } from '../core/models/ingredientItem.model';
 
 @Component({

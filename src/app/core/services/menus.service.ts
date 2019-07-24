@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { IMenuItem } from '../core/models/menuItem.model';
-import { RepositoryService } from '../core/services/repository.service';
+import { IMenuItem } from '../models/menuItem.model';
+import { RepositoryService } from './repository.service';
 
 @Injectable()
 export class MenusService {

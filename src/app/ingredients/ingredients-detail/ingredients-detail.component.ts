@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IngredientsService } from '../ingredients.service';
+import { IngredientsService } from '../../core/services/ingredients.service';
 import { IIngredientItem } from 'src/app/core/models/ingredientItem.model';
 
 @Component({
@@ -11,18 +11,9 @@ import { IIngredientItem } from 'src/app/core/models/ingredientItem.model';
 export class IngredientsDetailComponent implements OnInit {
   ingredient: IIngredientItem;
 
-  constructor(private route: ActivatedRoute, private ingredientsService: IngredientsService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.paramMap
-      .subscribe(params => {
-        const ingredientId = +params.get('id');
-        this.getIngredient(ingredientId);
-      });
-  }
-
-  getIngredient(id: number) {
-    this.ingredientsService.getIngredient(id)
-      .subscribe(ingredient => this.ingredient = ingredient);
+    this.route.data.subscribe(data => this.ingredient = data.ingredient);
   }
 }

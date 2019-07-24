@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../core/services/user.service';
 import { IUser } from '../core/models/user.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit, OnDestroy {
   authForm: FormGroup;
   authType: string;
   isAuthenticating: boolean = false;
+  authSubscription: Subscription;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private userService: UserService
@@ -26,12 +29,21 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.isAuthenticated
-      .subscribe(result => console.log(`isAuthenticated: ${result}`));
-    
     this.route.url.subscribe(url => {
       this.authType = url[url.length - 1].path;
     });
+
+    this.authSubscription = this.userService.isAuthenticated
+      .subscribe(result => {
+        console.log(`isAuthenticated: ${result}`);
+        if(result) {
+          this.router.navigateByUrl('/');
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    this.authSubscription.unsubscribe();
   }
 
   OnSubmit(){

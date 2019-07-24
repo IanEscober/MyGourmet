@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ReplaySubject, BehaviorSubject, Observable } from 'rxjs';
 import { IUser } from '../models/User.model';
 import { RepositoryService } from './repository.service';
-import { map, delay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -70,4 +70,8 @@ export class UserService {
       );
   }
 
+  dismiss() {
+    this.isAuthenticatedSubject.next(false);
+    this.userSubject.next({} as IUser);
+  }
 }

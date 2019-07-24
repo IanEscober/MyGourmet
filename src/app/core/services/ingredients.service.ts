@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { IIngredientItem } from '../core/models/ingredientItem.model';
-import { RepositoryService } from '../core/services/repository.service';
+import { IIngredientItem } from '../models/ingredientItem.model';
+import { RepositoryService } from './repository.service';
 
 @Injectable()
 export class IngredientsService {

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MenusService } from '../menus.service';
 import { IMenuItem } from 'src/app/core/models/menuItem.model';
 
 @Component({
@@ -11,19 +10,9 @@ import { IMenuItem } from 'src/app/core/models/menuItem.model';
 export class MenusDetailComponent implements OnInit {
   menu: IMenuItem;
 
-  constructor(private route: ActivatedRoute, private menuService: MenusService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.paramMap
-      .subscribe(params => {
-        const menuId = +params.get('id');
-        this.getMenu(menuId);
-      });
+    this.route.data.subscribe(data => this.menu = data.menu);
   }
-
-  getMenu(id: number) {
-    this.menuService.getMenu(id)
-      .subscribe(menu => this.menu = menu);
-  }
-
 }

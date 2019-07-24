@@ -1,20 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { MenusService } from './menus.service';
+import { RouterModule } from '@angular/router';
 import { MenusComponent } from './menus.component';
 import { MenusDetailComponent } from './menus-detail/menus-detail.component';
-import { RouterModule } from '@angular/router';
-
+import { MenusDetailResolver } from './menus-detail.resolver';
+import { MenusRoutingModule } from './menus-routing.module';
 
 @NgModule({
-  declarations: [MenusComponent, MenusDetailComponent],
+  declarations: [
+    MenusComponent, 
+    MenusDetailComponent
+  ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MenusRoutingModule
   ],
   providers: [
-    MenusService
+    MenusDetailResolver
   ]
 })
 export class MenusModule { }
