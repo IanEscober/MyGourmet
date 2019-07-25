@@ -1,0 +1,13 @@
+<nav *ngIf="page">
+    <ul>
+        <span>
+            <li *ngFor="let pageIndex of pageIndexes" (click)="onPageIndexClick(pageIndex)">
+                <a>{{pageIndex}}</a>
+            </li>
+        </span>
+
+        <span>
+            Showing {{page.shownItems}} of {{page.totalItems}}
+        </span>
+    </ul>
+</nav>
