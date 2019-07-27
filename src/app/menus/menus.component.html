@@ -1,10 +1,17 @@
 <h1>Menus</h1>
 
-<ul>
-    <li *ngFor="let menu of menus">
-        <h2><a routerLink="/menus/{{menu.id}}">{{menu.name}}</a></h2>
-        <p>{{menu.description}}</p>
-        <p>Price: {{menu.price}}</p>
-        <p>Available Stock: {{menu.stock}}</p>
-    </li>
-</ul>
+<div [hidden]="!isFetching">
+    <p>Loading...</p>
+</div>
+
+<div [hidden]="isFetching">
+    <ul>
+        <li *ngFor="let menu of menus">
+            <h2><a routerLink="/menus/{{menu.id}}">{{menu.name}}</a></h2>
+            <p>{{menu.description}}</p>
+            <p>Price: {{menu.price}}</p>
+            <p>Available Stock: {{menu.stock}}</p>
+        </li>
+    </ul>
+    <app-pager [page]="page" (transition)="onChangePage($event)"></app-pager>
+</div>

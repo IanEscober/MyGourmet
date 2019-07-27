@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { IPage } from 'src/app/core/models/page.model';
 
 @Component({
@@ -15,9 +15,7 @@ export class PagerComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     if (this.page) {
-      for (let index = 0; index < this.page.totalPages; index++) {
-        this.pageIndexes.push(index + 1)
-      }
+      this.populateIndexes();
     }
   }
 
@@ -26,12 +24,28 @@ export class PagerComponent implements OnInit, OnChanges {
       if (this.page.shownItems > this.page.totalItems) {
         this.page.shownItems = this.page.totalItems;
       }
+      this.populateIndexes(); //Detect if there are count changes
     }
   }
-
 
   onPageIndexClick(index: number) {
     this.transition.emit(index);
   }
 
+  onPageBackClick() {
+    this.transition.emit(this.page.currentPage - 1);
+  }
+
+  onPageNextClick() {
+    this.transition.emit(this.page.currentPage + 1);
+  }
+
+  private populateIndexes() {
+    if (this.pageIndexes.length) {
+      this.pageIndexes = [];
+    }
+    for (let index = 0; index < this.page.totalPages; index++) {
+      this.pageIndexes.push(index + 1)
+    }
+  }
 }

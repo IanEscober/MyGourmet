@@ -1,5 +1,5 @@
 import { Directive, TemplateRef, ViewContainerRef, Input, OnInit } from '@angular/core';
-import { UserService } from 'src/app/core/services/user.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Directive({
   selector: '[appRequiresAuth]'
@@ -15,11 +15,11 @@ export class RequiresAuthDirective implements OnInit {
   constructor(
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef,
-    private userService: UserService
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
-    this.userService.isAuthenticated
+    this.authService.isAuthenticated
       .subscribe(result => {
         const decision = (result && this.isAuthRequired) || (!result && !this.isAuthRequired);
         if (decision && !this.isRendered) {

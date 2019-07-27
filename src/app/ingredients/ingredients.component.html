@@ -1,10 +1,17 @@
 <h1>Ingredients</h1>
 
-<ul>
-    <li *ngFor="let ingredient of ingredients">
-        <h2><a routerLink="/ingredients/{{ingredient.id}}">{{ingredient.name}}</a></h2>
-        <p>{{ingredient.description}}</p>
-        <p>Price: {{ingredient.price}}</p>
-        <p>Available Stock: {{ingredient.stock}}</p>
-    </li>
-</ul>
+<div [hidden]="!isFetching">
+    <p>Loading...</p>
+</div>
+
+<div [hidden]="isFetching">
+    <ul>
+        <li *ngFor="let ingredient of ingredients">
+            <h2><a routerLink="/ingredients/{{ingredient.id}}">{{ingredient.name}}</a></h2>
+            <p>{{ingredient.description}}</p>
+            <p>Price: {{ingredient.price}}</p>
+            <p>Available Stock: {{ingredient.stock}}</p>
+        </li>
+    </ul>
+    <app-pager [page]="page" (transition)="onChangePage($event)"></app-pager>
+</div>

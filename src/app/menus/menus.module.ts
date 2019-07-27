@@ -5,6 +5,7 @@ import { MenusComponent } from './menus.component';
 import { MenusDetailComponent } from './menus-detail/menus-detail.component';
 import { MenusDetailResolver } from './menus-detail.resolver';
 import { MenusRoutingModule } from './menus-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MenusRoutingModule } from './menus-routing.module';
   imports: [
     CommonModule,
     RouterModule,
-    MenusRoutingModule
+    MenusRoutingModule,
+    SharedModule
   ],
   providers: [
     MenusDetailResolver

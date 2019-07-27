@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IMenuItem } from 'src/app/core/models/menuItem.model';
+import { IMenuItem } from 'src/app/core/models/menu-item.model';
 
 @Component({
   selector: 'app-menus-detail',

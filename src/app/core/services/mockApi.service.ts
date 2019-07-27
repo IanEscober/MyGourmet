@@ -1,6 +1,6 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { IMenuItem } from '../models/menuItem.model';
-import { IIngredientItem } from '../models/ingredientItem.model';
+import { IMenuItem } from '../models/menu-item.model';
+import { IIngredientItem } from '../models/ingredient-item.model';
 import { IUser } from '../models/user.model';
 import { Injectable } from '@angular/core';
 
