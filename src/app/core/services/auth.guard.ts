@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UserService } from './user.service';
+import { AuthService } from './auth.service';
 import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private userService: UserService) { }
+  constructor(private authService: AuthService) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
     const authType = url[url.length - 1].path
     const overrideRoutes = authType === 'login' || authType === 'register';
 
-    return this.userService.isAuthenticated
+    return this.authService.isAuthenticated
       .pipe(
         map(result => {
           if (result && overrideRoutes) {

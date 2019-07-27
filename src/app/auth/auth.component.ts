@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../core/services/user.service';
+import { AuthService } from '../core/services/auth.service';
 import { IUser } from '../core/models/user.model';
 import { Subscription } from 'rxjs';
 
@@ -20,7 +20,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private userService: UserService
+    private authService: AuthService
   ) {
     this.authForm = this.fb.group({
       'username': ['', Validators.required],
@@ -33,9 +33,8 @@ export class AuthComponent implements OnInit, OnDestroy {
       this.authType = url[url.length - 1].path;
     });
 
-    this.authSubscription = this.userService.isAuthenticated
+    this.authSubscription = this.authService.isAuthenticated
       .subscribe(result => {
-        console.log(`isAuthenticated: ${result}`);
         if(result) {
           this.router.navigateByUrl('/');
         }
@@ -58,12 +57,12 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   login(credentials: IUser) {
-    this.userService.authenticate(credentials)
+    this.authService.authenticate(credentials)
       .subscribe(isDone => this.isAuthenticating = !isDone);
   }
 
   register(credentials: IUser) {
-    this.userService.register(credentials)
+    this.authService.register(credentials)
       .subscribe(isDone => this.isAuthenticating = !isDone);
   }
 

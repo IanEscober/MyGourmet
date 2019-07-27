@@ -4,12 +4,12 @@ import { ModuleWithProviders } from '@angular/core';
 import { HttpClientModule }    from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MockApiService }  from './services/mockApi.service';
-import { UserService } from './services/user.service';
+import { AuthService } from './services/auth.service';
 import { RepositoryService } from './services/repository.service';
-import { AuthGuard } from './services/auth.guard';
 import { MenusService } from './services/menus.service';
 import { IngredientsService } from './services/ingredients.service';
-
+import { AuthPreloadingStrategyService } from './services/auth-preloading-strategy.service';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [],
@@ -21,7 +21,8 @@ import { IngredientsService } from './services/ingredients.service';
     )
   ],
   providers: [
-    RepositoryService
+    RepositoryService,
+    AuthService
   ]
 })
 export class CoreModule { 
@@ -35,11 +36,12 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
-        UserService,
+        AuthService,
         RepositoryService,
-        AuthGuard,
         MenusService,
-        IngredientsService
+        IngredientsService,
+        AuthGuard,
+        AuthPreloadingStrategyService
       ]
     };
   }

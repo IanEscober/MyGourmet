@@ -5,6 +5,7 @@ import { IngredientsComponent } from './ingredients.component';
 import { IngredientsDetailComponent } from './ingredients-detail/ingredients-detail.component';
 import { IngredientsDetailResolver } from './ingredients-detail.resolver';
 import { IngredientsRoutingModule } from './ingredients-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { IngredientsRoutingModule } from './ingredients-routing.module';
   imports: [
     CommonModule,
     RouterModule,
-    IngredientsRoutingModule
+    IngredientsRoutingModule,
+    SharedModule
   ],
   providers: [
     IngredientsDetailResolver
