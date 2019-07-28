@@ -5,11 +5,13 @@ import { AuthPreloadingStrategyService } from './core/services/auth-preloading-s
 const routes: Routes = [
   {
     path: 'menus',
-    loadChildren: () => import('./menus/menus.module').then(mod => mod.MenusModule)
+    loadChildren: () => import('./menus/menus.module').then(mod => mod.MenusModule),
+    data: { preloadOnlyOnAuth: false }
   },
   {
     path: 'ingredients',
-    loadChildren: () => import('./ingredients/ingredients.module').then(mod => mod.IngredientsModule)
+    loadChildren: () => import('./ingredients/ingredients.module').then(mod => mod.IngredientsModule),
+    data: { preloadOnlyOnAuth: false }
   },
   { path: '', redirectTo: '', pathMatch: 'full' }
   //{ path: '**', component: PageNotFoundComponent }
