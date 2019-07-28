@@ -1,27 +1,17 @@
 # MyGourmet
+A fictitious clone of [Blue Apron](https://www.blueapron.com/) and [Fresh Direct](https://www.freshdirect.com/). It provides an online grocery experience through pre-made meal-kits and fresh ingredients options. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1.
+## Technologies
+The following technologies may be subjected to change. The current plan is to have:
+- Framework: [Angular](https://angular.io/)
+- State Management: [NgRx](https://ngrx.io/) - will be probably opt out and instead rely on Observable Services
+- WebSockets: [SignalR](https://dotnet.microsoft.com/apps/aspnet/real-time)
 
-## Development server
+## Under Development
+MyGourmet is currently under development. Check the projects tab to see the current status of the project.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Contribution
+Yeet a Pull Request
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## License
+[MIT](https://github.com/IanEscober/MyGourmet/blob/master/LICENSE)
