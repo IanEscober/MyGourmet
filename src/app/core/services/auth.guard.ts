@@ -13,8 +13,8 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> {
     const url = route.url;
-    const authType = url[url.length - 1].path
-    const overrideRoutes = authType === 'login' || authType === 'register';
+    const urlType = url.length ? url[url.length - 1].path : state.url.substring(1);
+    const overrideRoutes = urlType === 'login' || urlType === 'register';
 
     return this.authService.isAuthenticated
       .pipe(

@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
       .subscribe(user => this.user = user.username);
   }
 
-  OnLogout() {
+  onLogout() {
     this.authService.dismiss();
     this.router.navigateByUrl('/');
   }

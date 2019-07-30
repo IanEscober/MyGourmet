@@ -33,4 +33,20 @@ export class RepositoryService {
                 catchError(this.handleError)
             );
     }
+
+    put<T>(url: string, data: T): Observable<T> {
+        return this.http.put<T>(url, data)
+            .pipe(
+                retry(3),
+                catchError(this.handleError)
+            );
+    }
+
+    delete(url: string): Observable<{}> {
+        return this.http.delete(url)
+            .pipe(
+                retry(3),
+                catchError(this.handleError)
+            );
+    }
 }

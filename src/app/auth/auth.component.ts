@@ -45,7 +45,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.authSubscription.unsubscribe();
   }
 
-  OnSubmit(){
+  onSubmit(){
     this.isAuthenticating = true;
     const credentials = this.authForm.value as IUser;
     

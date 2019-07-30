@@ -1,0 +1,13 @@
+<form [formGroup]="profileForm" (ngSubmit)="onUpdate()">
+    <fieldset [disabled]="isUpdating">
+        <fieldset>
+            <input formControlName="username" placeholder="Username" type="text" />
+        </fieldset>
+        <fieldset>
+            <input formControlName="password" placeholder="Password" type="password" />
+        </fieldset>
+        <button [disabled]="!profileForm.valid" type="submit">Update</button>
+    </fieldset>
+</form>
+
+<button (click)="onDelete()">Delete</button>
