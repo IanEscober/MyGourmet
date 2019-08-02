@@ -2,6 +2,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { IMenuItem } from '../models/menu-item.model';
 import { IIngredientItem } from '../models/ingredient-item.model';
 import { IUser } from '../models/user.model';
+import { ICart } from '../models/cart.model';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -31,6 +32,16 @@ export class MockApiService implements InMemoryDbService {
         const users: IUser[] = [
             { id: 1, username: 'admin', password: 'admin' }
         ];
-        return { ingredients, menus, users };
+
+        const carts: ICart[] = [
+            {
+                id: 1, cartItems:
+                    [
+                        { id: 1, itemId: 1, itemName: 'Salad', quantity: 1 },
+                        { id: 2, itemId: 2, itemName: 'Pepper', quantity: 2 }
+                    ]
+            }
+        ];
+        return { ingredients, menus, users, carts };
     }
 }

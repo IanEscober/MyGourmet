@@ -10,6 +10,7 @@ import { MenusService } from './services/menus.service';
 import { IngredientsService } from './services/ingredients.service';
 import { AuthPreloadingStrategyService } from './services/auth-preloading-strategy.service';
 import { AuthGuard } from './services/auth.guard';
+import { CartService } from './services/cart.service';
 
 @NgModule({
   declarations: [],
@@ -40,6 +41,7 @@ export class CoreModule {
         RepositoryService,
         MenusService,
         IngredientsService,
+        CartService,
         AuthGuard,
         AuthPreloadingStrategyService
       ]

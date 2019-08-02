@@ -51,8 +51,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.isUpdating = true;
 
     this.authService.delete()
-      .subscribe(isDone => this.isUpdating = !isDone);
-      
-    this.router.navigateByUrl('/');
+      .subscribe(isDone => {
+        this.isUpdating = !isDone;
+        this.router.navigateByUrl('/');
+      });
   }
 }
