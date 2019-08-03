@@ -3,8 +3,7 @@ import { ICartItem } from '../../core/models/cart-item.model';
 import { ICart } from 'src/app/core/models/cart.model';
 
 export const loadCart = createAction(
-    '[cart] LOAD_CART',
-    props<{ userId: number }>()
+    '[cart] LOAD_CART'
 );
 
 export const loadCartSuccess = createAction(
