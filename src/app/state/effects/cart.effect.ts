@@ -40,7 +40,7 @@ export class CartEffect {
         this.actions$.pipe(
             ofType(CartActions.removeFromCart),
             exhaustMap(action =>
-                this.cartService.addToCart(action.cartItem).pipe(
+                this.cartService.removeFromCart(action.id).pipe(
                     map(cart => CartActions.removeFromCartSuccess({cart})),
                     catchError(error => of(CartActions.removeFromCartFail(error)))
                 )

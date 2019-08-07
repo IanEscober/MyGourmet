@@ -33,7 +33,7 @@ export const addToCartFail = createAction(
 
 export const removeFromCart = createAction(
     '[cart] REMOVE_FROM_CART',
-    props<{ cartItem: ICartItem }>()
+    props<{ id: number }>()
 );
 
 export const removeFromCartSuccess = createAction(

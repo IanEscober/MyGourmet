@@ -21,8 +21,7 @@ export class CartFacade {
         this.store.dispatch(CartActions.addToCart({ cartItem }))
     }
 
-    removeFromCart(itemId: number, itemName: string, quantity: number) {
-        const cartItem = { itemId, itemName, quantity } as ICartItem;
-        this.store.dispatch(CartActions.removeFromCart({ cartItem }))
+    removeFromCart(id: number) {
+        this.store.dispatch(CartActions.removeFromCart({ id }))
     }
 }

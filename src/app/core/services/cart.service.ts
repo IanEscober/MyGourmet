@@ -57,7 +57,7 @@ export class CartService {
             cart.cartItems.push(cartItem);
             return this.updateCart(cart)
               .pipe(
-                mergeMap(_ => this.loadCart())
+                mergeMap(() => this.loadCart())
               );
           } else {
             cartItem.id = 1;
@@ -71,16 +71,16 @@ export class CartService {
       );
   }
 
-  removeFromCart(cartItem: ICartItem): Observable<ICart> {
+  removeFromCart(id: number): Observable<ICart> {
     return this.loadCart()
       .pipe(
         concatMap(cart => {
           if (cart) {
-            const index = cart.cartItems.indexOf(cartItem);
-            cart.cartItems.splice(index, 1);
+            const filteredItems =  cart.cartItems.filter(item => item.id !== id);
+            cart.cartItems = filteredItems;
             return this.updateCart(cart)
             .pipe(
-              mergeMap(_ => this.loadCart())
+              mergeMap(() => this.loadCart())
             );
           }
         })

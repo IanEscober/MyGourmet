@@ -1,0 +1,15 @@
+<h1>Cart</h1>
+
+<div [hidden]="!isLoading">
+    <p>Loading...</p>
+</div>
+
+<div [hidden]="isLoading" *ngIf="cart">
+    <ul>
+        <li *ngFor="let cartItem of cart.cartItems">
+            <p>{{cartItem.itemName}}</p>
+            <p>Quantity: {{cartItem.quantity}}</p>
+            <p (click)="onRemoveFromCart(cartItem.id)"><a>Remove</a></p>
+        </li>
+    </ul>
+</div>

@@ -35,7 +35,7 @@ export class AuthComponent implements OnInit, OnDestroy {
 
     this.authSubscription = this.authService.isAuthenticated
       .subscribe(result => {
-        if(result) {
+        if (result) {
           this.router.navigateByUrl('/');
         }
       });
@@ -45,13 +45,13 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.authSubscription.unsubscribe();
   }
 
-  onSubmit(){
+  onSubmit() {
     this.isAuthenticating = true;
     const credentials = this.authForm.value as IUser;
-    
-    if(this.authType === 'login') {
+
+    if (this.authType === 'login') {
       this.login(credentials);
-    } else if(this.authType === 'register') {
+    } else if (this.authType === 'register') {
       this.register(credentials);
     }
   }
@@ -65,5 +65,4 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.authService.register(credentials)
       .subscribe(isDone => this.isAuthenticating = !isDone);
   }
-
 }

@@ -18,6 +18,11 @@ const routes: Routes = [
     loadChildren: () => import('./profile/profile.module').then(mod => mod.ProfileModule),
     data: { preloadOnlyOnAuth: true }
   },
+  {
+    path: 'cart',
+    loadChildren: () => import('./cart/cart.module').then(mod => mod.CartModule),
+    data: { preloadOnlyOnAuth: true }
+  },
   { path: '', redirectTo: '', pathMatch: 'full' }
   //{ path: '**', component: PageNotFoundComponent }
 ];
