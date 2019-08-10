@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
 export class AuthPreloadingStrategyService implements PreloadingStrategy {
   private isAuthenticated: boolean;
 
-  constructor(private authService: AuthService) { 
+  constructor(private authService: AuthService) {
     this.authService.isAuthenticated
       .subscribe(result => this.isAuthenticated = result);
   }
@@ -15,18 +15,18 @@ export class AuthPreloadingStrategyService implements PreloadingStrategy {
   preload(route: Route, load: () => Observable<any>): Observable<any> {
     const { data } = route;
 
-    if(data) {
-      if(data.hasOwnProperty('preloadOnlyOnAuth')) {
+    if (data) {
+      if (data.hasOwnProperty('preloadOnlyOnAuth')) {
         const { preloadOnlyOnAuth } = data;
-        
-        if(preloadOnlyOnAuth && this.isAuthenticated) {
+
+        if (preloadOnlyOnAuth && this.isAuthenticated) {
           return load();
-        } else if(!preloadOnlyOnAuth && !this.isAuthenticated) {
+        } else if (!preloadOnlyOnAuth && !this.isAuthenticated) {
           return load();
         }
       }
     }
-    
+
     return of(null);
   }
 }

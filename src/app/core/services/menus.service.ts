@@ -6,8 +6,8 @@ import { RepositoryService } from './repository.service';
 
 @Injectable()
 export class MenusService {
-  private menusUrl: string = 'api/menus';
-  
+  private menusUrl = 'api/menus';
+
   constructor(private repository: RepositoryService) { }
 
   getMenus(index: number, take: number): Observable<{ items: IMenuItem[], count: number }> {

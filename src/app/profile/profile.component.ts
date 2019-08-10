@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   profileForm: FormGroup;
   user: IUser;
   userSubscription: Subscription;
-  isUpdating: boolean = false;
+  isUpdating = false;
 
   constructor(
     private router: Router,
@@ -22,15 +22,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private authService: AuthService
   ) {
     this.profileForm = this.fb.group({
-      'username': ['', Validators.required],
-      'password': ['', Validators.required]
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
   ngOnInit() {
     this.userSubscription = this.authService.user
       .subscribe(user => this.user = user);
-    
+
     this.profileForm.patchValue(this.user);
   }
 
@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   onUpdate() {
     this.isUpdating = true;
 
-    Object.assign(this.user, this.profileForm.value);  
+    Object.assign(this.user, this.profileForm.value);
 
     this.authService.update(this.user)
       .subscribe(isDone => this.isUpdating = !isDone);

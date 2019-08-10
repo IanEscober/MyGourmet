@@ -8,9 +8,9 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  user: string; 
+  user: string;
 
-  constructor(private router: Router ,private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
     this.authService.user

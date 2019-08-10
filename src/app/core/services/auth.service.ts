@@ -18,9 +18,9 @@ export class AuthService {
 
   private findUser(to: IUser, from: IUser[]): IUser {
     return from.find(user =>
-      to.username == user.username &&
-      to.password == user.password
-    )
+      to.username === user.username &&
+      to.password === user.password
+    );
   }
 
   private getUsers(): Observable<IUser[]> {
@@ -92,7 +92,7 @@ export class AuthService {
   update(tryUser: IUser): Observable<boolean> {
     return this.updateUser(tryUser)
       .pipe(
-        concatMap(_ => this.getUsers() //Gets Users again due to PUT returning null
+        concatMap(_ => this.getUsers() // Gets Users again due to PUT returning null
           .pipe(
             map(users => {
               const user = this.findUser(tryUser, users);
@@ -102,7 +102,7 @@ export class AuthService {
               return true;
             })
           ))
-      )
+      );
   }
 
   delete(): Observable<boolean> {
@@ -114,6 +114,6 @@ export class AuthService {
 
           return true;
         })
-      )
+      );
   }
 }

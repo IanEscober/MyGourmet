@@ -29,7 +29,7 @@ export class CartEffect {
             ofType(CartActions.addToCart),
             exhaustMap(action =>
                 this.cartService.addToCart(action.cartItem).pipe(
-                    map(cart => CartActions.addToCartSuccess({cart})),
+                    map(cart => CartActions.addToCartSuccess({ cart })),
                     catchError(error => of(CartActions.addToCartFail(error)))
                 )
             )
@@ -41,11 +41,10 @@ export class CartEffect {
             ofType(CartActions.removeFromCart),
             exhaustMap(action =>
                 this.cartService.removeFromCart(action.id).pipe(
-                    map(cart => CartActions.removeFromCartSuccess({cart})),
+                    map(cart => CartActions.removeFromCartSuccess({ cart })),
                     catchError(error => of(CartActions.removeFromCartFail(error)))
                 )
             )
         )
     );
-
 }

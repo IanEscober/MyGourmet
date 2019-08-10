@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 export class AuthComponent implements OnInit, OnDestroy {
   authForm: FormGroup;
   authType: string;
-  isAuthenticating: boolean = false;
+  isAuthenticating = false;
   authSubscription: Subscription;
 
   constructor(
@@ -23,8 +23,8 @@ export class AuthComponent implements OnInit, OnDestroy {
     private authService: AuthService
   ) {
     this.authForm = this.fb.group({
-      'username': ['', Validators.required],
-      'password': ['', Validators.required]
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 

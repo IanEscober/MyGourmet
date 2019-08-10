@@ -3,18 +3,18 @@ import * as CartActions from '../actions/cart.actions';
 import { ICart } from '../../core/models/cart.model';
 
 export interface Cart {
-    data: ICart,
-    loading: boolean
+    data: ICart;
+    loading: boolean;
 }
 
 export interface CartState {
-    readonly cart: Cart
+    readonly cart: Cart;
 }
 
 export const cartInitialState: Cart = {
     data: {} as ICart,
     loading: false
-}
+};
 
 const reducer = createReducer(
     cartInitialState,

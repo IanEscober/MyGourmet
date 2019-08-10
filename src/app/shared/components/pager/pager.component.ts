@@ -24,7 +24,7 @@ export class PagerComponent implements OnInit, OnChanges {
       if (this.page.shownItems > this.page.totalItems) {
         this.page.shownItems = this.page.totalItems;
       }
-      this.populateIndexes(); //Detect if there are count changes
+      this.populateIndexes(); // Detect if there are count changes
     }
   }
 
@@ -45,7 +45,7 @@ export class PagerComponent implements OnInit, OnChanges {
       this.pageIndexes = [];
     }
     for (let index = 0; index < this.page.totalPages; index++) {
-      this.pageIndexes.push(index + 1)
+      this.pageIndexes.push(index + 1);
     }
   }
 }

@@ -11,14 +11,14 @@ import { IPage } from '../core/models/page.model';
 export class IngredientsComponent implements OnInit {
   ingredients: IIngredientItem[];
   page: IPage;
-  isFetching: boolean = false;
+  isFetching = false;
 
-  constructor(private ingredientsService: IngredientsService) { 
-    //Initial Pager values
+  constructor(private ingredientsService: IngredientsService) {
+    // Initial Pager values
     this.page = {
       currentPage: 1,
       perPageItems: 5
-    }
+    };
   }
 
   ngOnInit() {
@@ -36,7 +36,7 @@ export class IngredientsComponent implements OnInit {
           shownItems: index * take,
           totalItems: ingredients.count,
           totalPages: Math.ceil(ingredients.count / take)
-        }
+        };
         this.isFetching = false;
       });
   }

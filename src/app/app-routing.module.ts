@@ -24,7 +24,7 @@ const routes: Routes = [
     data: { preloadOnlyOnAuth: true }
   },
   { path: '', redirectTo: '', pathMatch: 'full' }
-  //{ path: '**', component: PageNotFoundComponent }
+  // { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

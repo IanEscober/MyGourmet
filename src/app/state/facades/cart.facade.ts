@@ -18,10 +18,10 @@ export class CartFacade {
 
     addToCart(itemId: number, itemName: string, quantity: number) {
         const cartItem = { itemId, itemName, quantity } as ICartItem;
-        this.store.dispatch(CartActions.addToCart({ cartItem }))
+        this.store.dispatch(CartActions.addToCart({ cartItem }));
     }
 
     removeFromCart(id: number) {
-        this.store.dispatch(CartActions.removeFromCart({ id }))
+        this.store.dispatch(CartActions.removeFromCart({ id }));
     }
 }

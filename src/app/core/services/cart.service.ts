@@ -10,7 +10,7 @@ import { ICart } from '../models/cart.model';
 @Injectable()
 export class CartService {
   private cartsUrl = 'api/carts';
-  private user: IUser
+  private user: IUser;
 
   constructor(private repository: RepositoryService, private authService: AuthService) {
     this.authService.user
@@ -38,7 +38,7 @@ export class CartService {
     return this.getCarts()
       .pipe(
         map(response => {
-          const cart = response.find(carts => carts.id == this.user.id);
+          const cart = response.find(carts => carts.id === this.user.id);
           if (cart) {
             return cart;
           } else {
@@ -64,7 +64,7 @@ export class CartService {
             const newCart: ICart = {
               id: this.user.id,
               cartItems: [cartItem]
-            }
+            };
             return this.addCart(newCart);
           }
         })

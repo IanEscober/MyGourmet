@@ -8,4 +8,4 @@ export const getCartLoading = createSelector(getCart, (state: Cart) => state.loa
 export const cartQuery = {
     getCartData,
     getCartLoading
-}
+};

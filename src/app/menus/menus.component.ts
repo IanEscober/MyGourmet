@@ -11,14 +11,14 @@ import { IPage } from '../core/models/page.model';
 export class MenusComponent implements OnInit {
   menus: IMenuItem[];
   page: IPage;
-  isFetching: boolean = false;
+  isFetching = false;
 
-  constructor(private menuService: MenusService) { 
-    //Initial Pager values
+  constructor(private menuService: MenusService) {
+    // Initial Pager values
     this.page = {
       currentPage: 1,
       perPageItems: 5
-    }
+    };
   }
 
   ngOnInit() {
@@ -36,7 +36,7 @@ export class MenusComponent implements OnInit {
           shownItems: index * take,
           totalItems: menus.count,
           totalPages: Math.ceil(menus.count / take)
-        }
+        };
         this.isFetching = false;
       });
   }

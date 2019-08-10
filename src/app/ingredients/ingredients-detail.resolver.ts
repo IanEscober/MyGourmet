@@ -8,12 +8,12 @@ import { IngredientsService } from '../core/services/ingredients.service';
 export class IngredientsDetailResolver implements Resolve<IIngredientItem>  {
   constructor(
     private ingredientssService: IngredientsService
-  ) {}
+  ) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<IIngredientItem> {
-    return this.ingredientssService.getIngredient(route.params['id']);
+    return this.ingredientssService.getIngredient(route.params.id);
   }
 }

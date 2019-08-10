@@ -6,7 +6,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class RequiresAuthDirective implements OnInit {
   isAuthRequired: boolean;
-  isRendered: boolean = false;
+  isRendered = false;
 
   @Input() set appRequiresAuth(isAuthRequired: boolean) {
     this.isAuthRequired = isAuthRequired;

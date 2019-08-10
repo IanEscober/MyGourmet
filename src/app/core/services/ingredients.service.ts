@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class IngredientsService {
-  private ingredientsUrl: string = 'api/ingredients';
+  private ingredientsUrl = 'api/ingredients';
 
   constructor(private repository: RepositoryService) { }
 

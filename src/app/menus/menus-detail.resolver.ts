@@ -8,12 +8,12 @@ import { MenusService } from '../core/services/menus.service';
 export class MenusDetailResolver implements Resolve<IMenuItem>  {
   constructor(
     private menusService: MenusService
-  ) {}
+  ) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<IMenuItem> {
-    return this.menusService.getMenu(route.params['id']);
+    return this.menusService.getMenu(route.params.id);
   }
 }
