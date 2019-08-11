@@ -1,18 +1,24 @@
-<p>
-    <a [routerLink]="['/login']" *ngIf="authType == 'register'">Have an account?</a>
-    <a [routerLink]="['/register']" *ngIf="authType == 'login'">Need an account?</a>
-</p>
-
-<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
-    <fieldset [disabled]="isAuthenticating">
-        <fieldset>
-            <input formControlName="username" placeholder="Username" type="text" />
-        </fieldset>
-        <fieldset>
-            <input formControlName="password" placeholder="Password" type="password" />
-        </fieldset>
-        <button [disabled]="!authForm.valid" type="submit">
-            {{authType}}
-        </button>
-    </fieldset>
-</form>
+<div class="container container-spacing">
+    <div class="row justify-content-center">
+        <a [routerLink]="['/login']" *ngIf="authType == 'register'">Have an account?</a>
+        <a [routerLink]="['/register']" *ngIf="authType == 'login'">Need an account?</a>
+    </div>
+    <div class="row justify-content-center">
+        <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+            <fieldset [disabled]="isAuthenticating" class="form-group">
+                <fieldset>
+                    <input formControlName="username" placeholder="Username" type="text"
+                        class="form-control form-control-spacing" />
+                </fieldset>
+                <fieldset>
+                    <input formControlName="password" placeholder="Password" type="password"
+                        class="form-control form-control-spacing" />
+                </fieldset>
+                <button [disabled]="!authForm.valid" type="submit"
+                    class="form-control form-control-spacing btn btn-primary">
+                    {{authType}}
+                </button>
+            </fieldset>
+        </form>
+    </div>
+</div>

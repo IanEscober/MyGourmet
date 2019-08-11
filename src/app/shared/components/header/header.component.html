@@ -1,29 +1,34 @@
 <header>
-    <h1>Welcome {{user}}</h1>
     <nav>
-        <ul *appRequiresAuth="false">
-            <li>
-                <a routerLink="/register">Register</a>
+        <ul *appRequiresAuth="false" class="nav justify-content-end">
+            <li class="d-flex mr-auto">
+                <h3>Welcome {{user}}</h3>
             </li>
-            <li>
-                <a routerLink="/login">Login</a>
+            <li class="nav-item">
+                <a routerLink="/register" class="nav-link">Register</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/login" class="nav-link">Login</a>
             </li>
         </ul>
-        <ul *appRequiresAuth="true">
-            <li>
-                <a routerLink="/menus">Menus</a>
+        <ul *appRequiresAuth="true" class="nav justify-content-end">
+            <li class="d-flex mr-auto">
+                <h3>Welcome {{user}}</h3>
             </li>
-            <li>
-                <a routerLink="/ingredients">Ingredients</a>
+            <li class="nav-item">
+                <a routerLink="/menus" class="nav-link">Menus</a>
             </li>
-            <li>
-                <a routerLink="/profile">Profile</a>
+            <li class="nav-item">
+                <a routerLink="/ingredients" class="nav-link">Ingredients</a>
             </li>
-            <li>
-                <a routerLink="/cart">Cart</a>
+            <li class="nav-item">
+                <a routerLink="/profile" class="nav-link">Profile</a>
             </li>
-            <li (click)="onLogout()">
-                <a>Logout</a>
+            <li class="nav-item">
+                <a routerLink="/cart" class="nav-link">Cart</a>
+            </li>
+            <li (click)="onLogout()" class="nav-item">
+                <a class="nav-link">Logout</a>
             </li>
         </ul>
     </nav>
