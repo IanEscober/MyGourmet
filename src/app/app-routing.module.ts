@@ -23,7 +23,7 @@ const routes: Routes = [
     loadChildren: () => import('./cart/cart.module').then(mod => mod.CartModule),
     data: { preloadOnlyOnAuth: true }
   },
-  { path: '', redirectTo: '', pathMatch: 'full' }
+  { path: '', redirectTo: '/menus', pathMatch: 'full' }
   // { path: '**', component: PageNotFoundComponent }
 ];
 

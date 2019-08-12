@@ -1,13 +1,21 @@
-<form [formGroup]="profileForm" (ngSubmit)="onUpdate()">
-    <fieldset [disabled]="isUpdating">
-        <fieldset>
-            <input formControlName="username" placeholder="Username" type="text" />
-        </fieldset>
-        <fieldset>
-            <input formControlName="password" placeholder="Password" type="password" />
-        </fieldset>
-        <button [disabled]="!profileForm.valid" type="submit">Update</button>
-    </fieldset>
-</form>
-
-<button (click)="onDelete()">Delete</button>
+<div class="container container-spacing">
+    <div class="row justify-content-center">
+        <form [formGroup]="profileForm" (ngSubmit)="onUpdate()">
+            <fieldset [disabled]="isUpdating" class="form-group">
+                <fieldset>
+                    <input formControlName="username" placeholder="Username" type="text"
+                        class="form-control form-control-spacing" />
+                </fieldset>
+                <fieldset>
+                    <input formControlName="password" placeholder="Password" type="password"
+                        class="form-control form-control-spacing" />
+                </fieldset>
+                <button [disabled]="!profileForm.valid" type="submit"
+                    class="form-control form-control-spacing btn btn-primary">Update</button>
+            </fieldset>
+        </form>
+    </div>
+    <div class="row justify-content-center">
+        <button (click)="onDelete()" class="btn btn-danger">Delete</button>
+    </div>
+</div>

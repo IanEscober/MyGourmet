@@ -1,17 +1,22 @@
-<h1>Ingredients</h1>
+<h3>Ingredients</h3>
 
 <div [hidden]="!isFetching">
     <p>Loading...</p>
 </div>
 
 <div [hidden]="isFetching">
-    <ul>
-        <li *ngFor="let ingredient of ingredients">
-            <h2><a routerLink="/ingredients/{{ingredient.id}}">{{ingredient.name}}</a></h2>
-            <p>{{ingredient.description}}</p>
-            <p>Price: {{ingredient.price}}</p>
-            <p>Available Stock: {{ingredient.stock}}</p>
-        </li>
-    </ul>
+    <div class="card-deck">
+        <div *ngFor="let ingredient of ingredients" class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ingredient.name}}</h5>
+                <p class="card-text">{{ingredient.description}}</p>
+                <p class="card-text">Price: {{ingredient.price}}</p>
+                <p class="card-text">Available Stock: {{ingredient.stock}}</p>
+            </div>
+            <div class="card-footer text-center">
+                <a routerLink="/ingredients/{{ingredient.id}}" class="btn btn-primary">View</a>
+            </div>
+        </div>
+    </div>
     <app-pager [page]="page" (transition)="onChangePage($event)"></app-pager>
 </div>

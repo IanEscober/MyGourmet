@@ -1,10 +1,15 @@
-<nav *ngIf="page && page.totalPages > 1">
-    <ul class="pager">
-        <span [hidden]="page.currentPage === 1" (click)="onPageBackClick()"><a>back </a></span>
-        <li *ngFor="let pageIndex of pageIndexes" (click)="onPageIndexClick(pageIndex)">
-            <a>{{pageIndex}} </a>
+<nav *ngIf="page && page.totalPages > 1" class="pager-spacing">
+    <ul class="pagination justify-content-center">
+        <span [class.disabled]="page.currentPage === 1" (click)="onPageBackClick()" class="page-item">
+            <a class="page-link">back </a>
+        </span>
+        <li *ngFor="let pageIndex of pageIndexes" (click)="onPageIndexClick(pageIndex)"
+            [class.disabled]="pageIndex === page.currentPage" class="page-item">
+            <a class="page-link">{{pageIndex}} </a>
         </li>
-        <span [hidden]="page.currentPage === page.totalPages" (click)="onPageNextClick()"><a> next</a></span>
-        <p>Showing {{page.shownItems}} of {{page.totalItems}}</p>
+        <span [class.disabled]="page.currentPage === page.totalPages" (click)="onPageNextClick()" class="page-item">
+            <a class="page-link"> next</a>
+        </span>
     </ul>
+    <p class="text-center">Showing {{page.shownItems}} of {{page.totalItems}}</p>
 </nav>
