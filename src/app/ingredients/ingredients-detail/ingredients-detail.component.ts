@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { IIngredientItem } from 'src/app/core/models/ingredient-item.model';
 import { CartFacade } from 'src/app/state/facades/cart.facade';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-ingredients-detail',
@@ -12,7 +13,7 @@ export class IngredientsDetailComponent implements OnInit {
   ingredient: IIngredientItem;
 
   constructor(
-    private router: Router,
+    private location: Location,
     private route: ActivatedRoute,
     private cartFacade: CartFacade
   ) { }
@@ -23,6 +24,6 @@ export class IngredientsDetailComponent implements OnInit {
 
   onAddToCart() {
     this.cartFacade.addToCart(this.ingredient.id, this.ingredient.name, 1);
-    this.router.navigateByUrl('/ingredients');
+    this.location.back();
   }
 }

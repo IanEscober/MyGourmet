@@ -5,6 +5,6 @@
     <p>Price: {{ingredient.price}}</p>
     <p>Available Stock: {{ingredient.stock}}</p>
     <p class="lead">
-        <button (click)="onAddToCart()" type="button" class="btn btn-success">Add To Cart</button>
+        <button *appRequiresAuth="true" (click)="onAddToCart()" type="button" class="btn btn-success">Add To Cart</button>
     </p>
 </div>
