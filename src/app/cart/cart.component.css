@@ -1,0 +1,4 @@
+.table-styles td, .table-styles th {
+    text-align: center;
+    border: none;
+}

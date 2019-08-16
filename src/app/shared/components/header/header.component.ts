@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -7,19 +7,12 @@ import { AuthService } from 'src/app/core/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
-  user: string;
+export class HeaderComponent {
 
   constructor(private router: Router, private authService: AuthService) { }
-
-  ngOnInit() {
-    this.authService.user
-      .subscribe(user => this.user = user.username);
-  }
 
   onLogout() {
     this.authService.dismiss();
     this.router.navigateByUrl('/');
   }
-
 }
