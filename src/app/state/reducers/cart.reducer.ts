@@ -27,7 +27,6 @@ const reducer = createReducer(
             loading: true
         })
     ),
-
     on(
         CartActions.loadCartSuccess,
         CartActions.addToCartSuccess,
@@ -37,13 +36,13 @@ const reducer = createReducer(
             data: action.cart,
             loading: false
         })),
-
-    on(CartActions.loadCartFail, state => ({
-        ...state,
-        data: cartInitialState.data,
-        loading: false
-    })),
-
+    on(
+        CartActions.loadCartFail,
+        state => ({
+            ...state,
+            data: cartInitialState.data,
+            loading: false
+        })),
     on(
         CartActions.addToCartFail,
         CartActions.removeFromCartFail,
