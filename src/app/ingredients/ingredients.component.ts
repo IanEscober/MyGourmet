@@ -37,7 +37,7 @@ export class IngredientsComponent implements OnInit, OnDestroy {
         };
       });
 
-    this.ingredientsFacade.isLoading$
+    this.isFetchingSubscription = this.ingredientsFacade.isLoading$
       .subscribe(isLoading => this.isFetching = isLoading);
 
     this.ingredientsFacade.loadIngredients(this.page.currentPage, this.page.perPageItems);

@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/router';
-import { Observable } from 'rxjs';
-import { IIngredientItem } from '../core/models/ingredient-item.model';
-import { IngredientsService } from '../core/services/ingredients.service';
+import { IngredientFacade } from '../state/facades/ingredient.facade';
 
 @Injectable()
-export class IngredientsDetailResolver implements Resolve<IIngredientItem>  {
+export class IngredientsDetailResolver implements Resolve<any>  {
   constructor(
-    private ingredientssService: IngredientsService
+    private ingredientFacade: IngredientFacade
   ) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<IIngredientItem> {
-    return this.ingredientssService.getIngredient(route.params.id);
+  ) {
+    this.ingredientFacade.loadIngredient(route.params.id);
   }
 }
