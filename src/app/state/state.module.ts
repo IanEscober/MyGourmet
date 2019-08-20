@@ -1,24 +1,35 @@
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { cartInitialState, cartReducer } from './reducers/cart.reducer';
-import { ingredientsInitialState, ingredientsReducer } from './reducers/ingredients.reducer';
-import { ingredientInitialState, ingredientReducer } from './reducers/ingredient.reducer';
-import { CartEffect } from './effects/cart.effect';
-import { IngredientsEffect } from './effects/ingredients.effect';
-import { IngredientEffect } from './effects/ingredient.effect';
-import { CartFacade } from './facades/cart.facade';
-import { IngredientsFacade } from './facades/ingredients.facade';
-import { IngredientFacade } from './facades/ingredient.facade';
+import {
+  cartInitialState, cartReducer,
+  ingredientsInitialState, ingredientsReducer,
+  ingredientInitialState, ingredientReducer,
+  menusInitialState, menusReducer
+} from './reducers';
+import {
+  CartEffect,
+  IngredientsEffect,
+  IngredientEffect,
+  MenusEffect
+} from './effects';
+import {
+  CartFacade,
+  IngredientsFacade,
+  IngredientFacade,
+  MenusFacade
+} from './facades';
 
 @NgModule({
   imports: [
     StoreModule.forFeature('cart', cartReducer, { initialState: cartInitialState }),
     StoreModule.forFeature('ingredients', ingredientsReducer, { initialState: ingredientsInitialState }),
     StoreModule.forFeature('ingredient', ingredientReducer, { initialState: ingredientInitialState }),
+    StoreModule.forFeature('menus', menusReducer, { initialState: menusInitialState }),
     EffectsModule.forFeature([CartEffect]),
     EffectsModule.forFeature([IngredientsEffect]),
-    EffectsModule.forFeature([IngredientEffect])
+    EffectsModule.forFeature([IngredientEffect]),
+    EffectsModule.forFeature([MenusEffect])
   ]
 })
 export class StateModule {
@@ -33,11 +44,13 @@ export class StateModule {
       ngModule: StateModule,
       providers: [
         CartEffect,
-        IngredientsEffect,
-        IngredientEffect,
         CartFacade,
+        IngredientsEffect,
         IngredientsFacade,
-        IngredientFacade
+        IngredientEffect,
+        IngredientFacade,
+        MenusEffect,
+        MenusFacade
       ]
     };
   }

@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IIngredientItem } from '../core/models/ingredient-item.model';
 import { IPage } from '../core/models/page.model';
 import { Subscription } from 'rxjs';
-import { IngredientsFacade } from '../state/facades/ingredients.facade';
+import { IngredientsFacade } from '../state/facades';
 
 @Component({
   selector: 'app-ingredients',
@@ -12,9 +12,8 @@ import { IngredientsFacade } from '../state/facades/ingredients.facade';
 export class IngredientsComponent implements OnInit, OnDestroy {
   ingredients: IIngredientItem[];
   page: IPage;
-  isFetching = false;
-  ingredientsSubscription: Subscription;
-  isFetchingSubscription: Subscription;
+  isLoading = false;
+  subSink = new Array<Subscription>();
 
   constructor(private ingredientsFacade: IngredientsFacade) {
     // Initial Pager values
@@ -25,7 +24,7 @@ export class IngredientsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.ingredientsSubscription = this.ingredientsFacade.ingredients$
+    this.subSink.push(this.ingredientsFacade.ingredients$
       .subscribe(({ items, count }) => {
         this.ingredients = items;
         this.page = {
@@ -35,17 +34,16 @@ export class IngredientsComponent implements OnInit, OnDestroy {
           totalItems: count,
           totalPages: Math.ceil(count / this.page.perPageItems)
         };
-      });
+      }));
 
-    this.isFetchingSubscription = this.ingredientsFacade.isLoading$
-      .subscribe(isLoading => this.isFetching = isLoading);
+    this.subSink.push(this.ingredientsFacade.isLoading$
+      .subscribe(isLoading => this.isLoading = isLoading));
 
     this.ingredientsFacade.loadIngredients(this.page.currentPage, this.page.perPageItems);
   }
 
   ngOnDestroy() {
-    this.ingredientsSubscription.unsubscribe();
-    this.isFetchingSubscription.unsubscribe();
+    this.subSink.forEach(sub => sub.unsubscribe());
   }
 
   onChangePage(index: number) {

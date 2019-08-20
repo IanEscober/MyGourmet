@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Ingredients } from '../reducers/ingredients.reducer';
+import { Ingredients } from '../reducers';
 
 const getIngredients = createFeatureSelector<Ingredients>('ingredients');
 export const getIngredientsData = createSelector(getIngredients, (state: Ingredients) => state.data);

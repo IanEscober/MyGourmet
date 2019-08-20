@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { MenusService } from '../core/services/menus.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IMenuItem } from '../core/models/menu-item.model';
 import { IPage } from '../core/models/page.model';
+import { MenusFacade } from '../state/facades';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menus.component.html',
   styleUrls: ['./menus.component.css']
 })
-export class MenusComponent implements OnInit {
+export class MenusComponent implements OnInit, OnDestroy {
   menus: IMenuItem[];
   page: IPage;
-  isFetching = false;
+  isLoading = false;
+  subSink = new Array<Subscription>();
 
-  constructor(private menuService: MenusService) {
+  constructor(private menusFacade: MenusFacade) {
     // Initial Pager values
     this.page = {
       currentPage: 1,
@@ -22,27 +24,31 @@ export class MenusComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getMenus(this.page.currentPage, this.page.perPageItems);
+    this.subSink.push(this.menusFacade.menus$
+      .subscribe(({ items, count }) => {
+        this.menus = items;
+        this.page = {
+          currentPage: this.page.currentPage,
+          perPageItems: this.page.perPageItems,
+          shownItems: this.page.currentPage * this.page.perPageItems,
+          totalItems: count,
+          totalPages: Math.ceil(count / this.page.perPageItems)
+        };
+      }));
+
+    this.subSink.push(this.menusFacade.isLoading$
+      .subscribe(isLoading => this.isLoading = isLoading));
+
+    this.menusFacade.loadMenus(this.page.currentPage, this.page.perPageItems);
   }
 
-  getMenus(index: number, take: number) {
-    this.isFetching = true;
-    this.menuService.getMenus(index, take)
-      .subscribe(menus => {
-        this.menus = menus.items;
-        this.page = {
-          currentPage: index,
-          perPageItems: take,
-          shownItems: index * take,
-          totalItems: menus.count,
-          totalPages: Math.ceil(menus.count / take)
-        };
-        this.isFetching = false;
-      });
+  ngOnDestroy() {
+    this.subSink.forEach(sub => sub.unsubscribe());
   }
 
   onChangePage(index: number) {
-    this.getMenus(index, this.page.perPageItems);
+    this.page.currentPage = index;
+    this.menusFacade.loadMenus(index, this.page.perPageItems);
   }
 
 }

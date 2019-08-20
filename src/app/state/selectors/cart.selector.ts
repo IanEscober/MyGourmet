@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Cart } from '../reducers/cart.reducer';
+import { Cart } from '../reducers';
 
 const getCart = createFeatureSelector<Cart>('cart');
 export const getCartData = createSelector(getCart, (state: Cart) => state.data);

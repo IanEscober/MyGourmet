@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as IngredientsActions from '../actions/ingredients.action';
-import { IngredientsState } from '../reducers/ingredients.reducer';
-import { ingredientsQuery } from '../selectors/ingredients.selector';
+import { IngredientsState } from '../reducers';
+import { ingredientsQuery } from '../selectors';
 
 @Injectable()
 export class IngredientsFacade {

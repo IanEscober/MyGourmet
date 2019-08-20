@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as CartActions from '../actions/cart.actions';
-import { CartState } from '../reducers/cart.reducer';
-import { cartQuery } from '../selectors/cart.selector';
+import { CartState } from '../reducers';
+import { cartQuery } from '../selectors';
 import { ICartItem } from 'src/app/core/models/cart-item.model';
 
 @Injectable()

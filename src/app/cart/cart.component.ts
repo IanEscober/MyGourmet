@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CartFacade } from '../state/facades/cart.facade';
+import { CartFacade } from '../state/facades';
 import { ICart } from '../core/models/cart.model';
 import { Subscription } from 'rxjs';
 

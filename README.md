@@ -4,7 +4,7 @@ A fictitious clone of [Blue Apron](https://www.blueapron.com/) and [Fresh Direct
 ## Technologies
 The following technologies may be subjected to change. The current plan is to have:
 - Framework: [Angular](https://angular.io/)
-- State Management: [NgRx](https://ngrx.io/) - will be probably opt out and instead rely on Observable Services
+- State Management: [NgRx](https://ngrx.io/)
 - WebSockets: [SignalR](https://dotnet.microsoft.com/apps/aspnet/real-time)
 
 ## Under Development
