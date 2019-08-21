@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/router';
-import { Observable } from 'rxjs';
-import { IMenuItem } from '../core/models/menu-item.model';
-import { MenusService } from '../core/services/menus.service';
+import { MenuFacade } from '../state';
 
 @Injectable()
-export class MenusDetailResolver implements Resolve<IMenuItem>  {
+export class MenusDetailResolver implements Resolve<any>  {
   constructor(
-    private menusService: MenusService
+    private menuFacade: MenuFacade
   ) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<IMenuItem> {
-    return this.menusService.getMenu(route.params.id);
+  ) {
+    return this.menuFacade.loadMenu(route.params.id);
   }
 }

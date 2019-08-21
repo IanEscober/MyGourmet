@@ -1,4 +1,8 @@
-<div class="jumbotron jumbotron-styles">
+<div [hidden]="!isLoading">
+    <p>Loading...</p>
+</div>
+
+<div [hidden]="isLoading" class="jumbotron jumbotron-styles">
     <h1 class="display-4">{{menu.name}}</h1>
     <p class="lead">{{menu.description}}</p>
     <hr class="my-4">

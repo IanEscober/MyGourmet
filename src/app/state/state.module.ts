@@ -5,19 +5,22 @@ import {
   cartInitialState, cartReducer,
   ingredientsInitialState, ingredientsReducer,
   ingredientInitialState, ingredientReducer,
-  menusInitialState, menusReducer
+  menusInitialState, menusReducer,
+  menuInitialState, menuReducer
 } from './reducers';
 import {
   CartEffect,
   IngredientsEffect,
   IngredientEffect,
-  MenusEffect
+  MenusEffect,
+  MenuEffect
 } from './effects';
 import {
   CartFacade,
   IngredientsFacade,
   IngredientFacade,
-  MenusFacade
+  MenusFacade,
+  MenuFacade
 } from './facades';
 
 @NgModule({
@@ -26,10 +29,12 @@ import {
     StoreModule.forFeature('ingredients', ingredientsReducer, { initialState: ingredientsInitialState }),
     StoreModule.forFeature('ingredient', ingredientReducer, { initialState: ingredientInitialState }),
     StoreModule.forFeature('menus', menusReducer, { initialState: menusInitialState }),
+    StoreModule.forFeature('menu', menuReducer, { initialState: menuInitialState }),
     EffectsModule.forFeature([CartEffect]),
     EffectsModule.forFeature([IngredientsEffect]),
     EffectsModule.forFeature([IngredientEffect]),
-    EffectsModule.forFeature([MenusEffect])
+    EffectsModule.forFeature([MenusEffect]),
+    EffectsModule.forFeature([MenuEffect])
   ]
 })
 export class StateModule {
@@ -43,14 +48,11 @@ export class StateModule {
     return {
       ngModule: StateModule,
       providers: [
-        CartEffect,
         CartFacade,
-        IngredientsEffect,
         IngredientsFacade,
-        IngredientEffect,
         IngredientFacade,
-        MenusEffect,
-        MenusFacade
+        MenusFacade,
+        MenuFacade
       ]
     };
   }

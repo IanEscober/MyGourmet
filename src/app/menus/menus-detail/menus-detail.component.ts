@@ -1,25 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IMenuItem } from 'src/app/core/models/menu-item.model';
 import { CartFacade } from 'src/app/state/facades/cart.facade';
 import { Location } from '@angular/common';
+import { Subscription } from 'rxjs';
+import { MenuFacade } from 'src/app/state';
 
 @Component({
   selector: 'app-menus-detail',
   templateUrl: './menus-detail.component.html',
   styleUrls: ['./menus-detail.component.css']
 })
-export class MenusDetailComponent implements OnInit {
+export class MenusDetailComponent implements OnInit, OnDestroy {
   menu: IMenuItem;
+  isLoading = false;
+  subSink = new Array<Subscription>();
 
   constructor(
     private location: Location,
-    private route: ActivatedRoute,
-    private cartFacade: CartFacade
+    private cartFacade: CartFacade,
+    private menuFacade: MenuFacade
   ) { }
 
   ngOnInit() {
-    this.route.data.subscribe(data => this.menu = data.menu);
+    this.subSink.push(this.menuFacade.menu$
+      .subscribe(menu => this.menu = menu));
+    this.subSink.push(this.menuFacade.isLoading$
+      .subscribe(isLoading => this.isLoading = isLoading));
+  }
+
+  ngOnDestroy() {
+    this.subSink.forEach(sub => sub.unsubscribe());
   }
 
   onAddToCart() {
